@@ -26,12 +26,43 @@
             <li class="nav-item active">
                 <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="signup.php">Signup</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="login.php">login</a>
-            </li>
+
+            <?
+            session_start();
+            if(isset($_SESSION['mtumizi'])){
+                $user = $_SESSION['mtumizi'];
+                if($user == 'supplier'){
+                    echo '
+                    <li class="nav-item">
+                     <a class="nav-link" href="dashboard.php">Dashboard</a>
+                     </li>
+                    
+                    ';
+                }
+            }
+
+
+            if(isset($_SESSION['loggedin'])){
+//                IF LOGGED IN
+                echo '
+                <li class="nav-item">
+                <a class="nav-link" href="logout.php">logOut</a>
+                </li>
+                ';
+
+            }else{
+                echo'
+                <li class="nav-item">
+                <a class="nav-link" href="signup.php">SignUp</a>
+                </li>
+                 <li class="nav-item">
+                <a class="nav-link" href="login.php">logIn</a>
+                </li>
+                
+                ';
+            }
+            ?>
+
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

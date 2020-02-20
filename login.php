@@ -34,7 +34,7 @@ if(isset($_POST['btn_login'])){
 
 //     CHECK IF EMAIL AND PASSWORD MATCH
 
-    $sql ="SELECT `id`,`email`, `Password` FROM `users` WHERE email='$email' AND password = '$password'";
+    $sql ="SELECT `id`, `username`, `email`, `Password`, `usertype` FROM `users` WHERE email='$email' AND password='$password'";
 
     $results = mysqli_query($conn, $sql);
 
@@ -48,9 +48,11 @@ if(isset($_POST['btn_login'])){
             session_start();
             $_SESSION['kipande'] = $id;
             $_SESSION['loggedin'] =true;
+            $_SESSION['email'] = $email;
+            $_SESSION['mtumizi'] = $rows['usertype'];
 
 //            TAKES USER TO INDEX PAGE
-            header("location:index.php");
+            header("location:index.php?msg_login");
             exit();
 
         }
@@ -60,8 +62,6 @@ if(isset($_POST['btn_login'])){
 //        echo "USER HAYUKO";
         header("location:login.php");
     }
-
-
 
 }
 
