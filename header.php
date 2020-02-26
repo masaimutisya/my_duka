@@ -34,7 +34,7 @@
                 if($user == 'supplier'){
                     echo '
                     <li class="nav-item">
-                     <a class="nav-link" href="dashboard.php">Dashboard</a>
+                     <a class="nav-link" href="dash.php">Dashboard</a>
                      </li>
                     
                     ';
